@@ -1,6 +1,7 @@
 const accounts = require("../model/accounts");
 const express = require("express");
 const fs = require("fs");
+const Cart = require("../model/carts");
 
 exports.hasClass = (user_class) => {
     return async function (req, res, next) {
@@ -18,9 +19,11 @@ exports.hasClass = (user_class) => {
     }
 }
 
-exports.isLoggedIn = (req, res, next) => {
+exports.isLoggedIn = async (req, res, next) => {
     if (req.session.username) {
-        res.render("userPage/checkout" ,{ username: req.session.username });
+        
+        let carts = await Cart.getCart({});
+        res.render("userPage/checkout" ,{ username: req.session.username ,cartList: carts});
         next();
     } else {
         req.session.message = "You must be loggin to view that page!";

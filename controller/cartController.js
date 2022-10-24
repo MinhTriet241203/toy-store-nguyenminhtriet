@@ -80,3 +80,19 @@ exports.checkout = async (request, respond , next) =>{
         console.log(error);
     }
 }
+
+exports.placeOrder = async (request, respond , next) =>{
+
+    try{
+        let carts = await Cart.getCart({});
+
+        //JSON.stringify to show object array
+        const str = JSON.stringify(carts);
+        console.log("Products add cart: " + str);
+
+        respond.render('userPage/cart',{cartList: carts,username: req.session.username })
+    }
+    catch(error){
+        console.log(error);
+    }
+}

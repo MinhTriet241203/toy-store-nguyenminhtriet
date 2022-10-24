@@ -72,6 +72,8 @@ router.get("/contact", (req, res) => {
     res.render("userPage/contact", req.session.username ? {username: req.session.username} : null);
 });
 
+router.get("/placeOrder", cartController.placeOrder);
+
 //!Exporting router module|================================================
 
 exports.UserRouter = router;
