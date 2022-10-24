@@ -23,6 +23,7 @@ module.exports = class Cart{
         if (cart === null) {
             cart = { products: [], totalPrice: 0 };
         }
+            cart.totalPrice = 0;
             cart.products.push(product);
             //const strProduct = JSON.stringify(product);
             //console.log("find Product to add to cart: " + product);
@@ -31,8 +32,16 @@ module.exports = class Cart{
             const str = JSON.stringify(cart);
             console.log("Products add cart: " + str);
         
+            let counter = 0;
+            for (let i = 0; i < cart.products.length; i++) {
+                cart.totalPrice += cart.products[i].total;
+                counter++;
+            }
 
-        // cart.totalPrice += product.price;
+            console.log('Counter: ' + counter);
+           
+            console.log("total 1: " + cart.totalPrice);
+            console.log("total 2: " + cart.products[0].total);
     }
     static getCart(){
         return cart;

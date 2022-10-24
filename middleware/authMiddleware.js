@@ -20,7 +20,7 @@ exports.hasClass = (user_class) => {
 
 exports.isLoggedIn = (req, res, next) => {
     if (req.session.username) {
-        res.render("userPage/checkout");
+        res.render("userPage/checkout" ,{ username: req.session.username });
         next();
     } else {
         req.session.message = "You must be loggin to view that page!";
