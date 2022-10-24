@@ -7,6 +7,7 @@ const path = require('path');
 const mongoose = require("mongoose");
 const hbs = require("hbs");
 const session = require('express-session');
+const bcrypt = require("bcrypt");
 
 //Middleware|=======================================================================
 
