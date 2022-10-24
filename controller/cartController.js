@@ -7,15 +7,19 @@ const Cart = require('../model/carts');
 
 exports.addToCart = async (request, respond , next) => {
 
-    console.log("\n BODY: ", request.body);
-    console.log("\n Params: ", request.params);
-    console.log("\n Query: ", request.query);
-    console.log("\n File: ", request.file);
+    // console.log("\n BODY: ", request.body);
+    // console.log("\n Params: ", request.params);
+    // console.log("\n Query: ", request.query);
+    // console.log("\n File: ", request.file);
 
     const productID = request.body.id;
-    const quantity= request.body.quantity;;
+    const quantity= request.body.quantity;
+    const name = request.body.name;
+    const image = reques.body.image;
+    const price = reques.body.image;
 
-    const addCart = new Cart(productID, quantity);
+
+    const addCart = new Cart(productID, quantity, name,image,price);
     Cart.save(addCart);
 
     //console.log(" find product to add to cart: " + addCart );
@@ -35,13 +39,6 @@ exports.cartView = async (request, respond , next) => {
         let carts = await Cart.getCart({});
 
 
-        // get all ids
-        var ids = Cart.products.map(x => x.survey_id)
-        console.log(ids)
-
-        // get first id
-        var id = Cart.products[0].survey_id;
-        console.log(id)
 
         //JSON.stringify to show object array
         const str = JSON.stringify(carts);

@@ -3,9 +3,12 @@ let cart = null;
 
 module.exports = class Cart{
 
-    constructor(productID, quantity) {
+    constructor(productID, quantity , name, image, price) {
         this.productID = productID;
         this.quantity = quantity;
+        this.name = name;
+        this.image = image;
+        this.price = price;
     }
 
     static save(product){
