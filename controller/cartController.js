@@ -7,7 +7,7 @@ const Cart = require('../model/carts');
 
 exports.addToCart = async (request, respond , next) => {
 
-    // console.log("\n BODY: ", request.body);
+    console.log("\n BODY: ", request.body);
     // console.log("\n Params: ", request.params);
     // console.log("\n Query: ", request.query);
     // console.log("\n File: ", request.file);
@@ -15,8 +15,8 @@ exports.addToCart = async (request, respond , next) => {
     const productID = request.body.id;
     const quantity= request.body.quantity;
     const name = request.body.name;
-    const image = reques.body.image;
-    const price = reques.body.image;
+    const image = request.body.image;
+    const price = request.body.price;
 
 
     const addCart = new Cart(productID, quantity, name,image,price);
