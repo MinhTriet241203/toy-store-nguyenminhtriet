@@ -108,7 +108,7 @@
                         <div class="product__details__price">${{Products.price}}</div>
                         <p>{{Products.description}}</p>
                         <form action="/addToCart?productID={{Products._id}}" method="post">
-                            <input type="hidden" name="name" value="{{Products.name}}">
+                            <input type="hidden" name="name" value="{{Products.product_name}}">
                             <input type="hidden" name="image" value="{{Products.image}}">
                             <input type="hidden" name="price" value="{{Products.price}}">
                             <div class="product__details__quantity">

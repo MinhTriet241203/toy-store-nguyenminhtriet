@@ -3,15 +3,23 @@ let cart = null;
 
 module.exports = class Cart{
 
-    constructor(productID, quantity , name, image, price) {
+    constructor(productID, quantity , name, image, price, total) {
         this.productID = productID;
         this.quantity = quantity;
         this.name = name;
         this.image = image;
         this.price = price;
+        this.total = total;
     }
 
     static save(product){
+        // Cart.foreach( cart.products => {
+        //     console.log("122");
+        // });
+
+        // let getCart = await Cart.getCart({});
+
+
         if (cart === null) {
             cart = { products: [], totalPrice: 0 };
         }

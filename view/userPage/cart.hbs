@@ -91,7 +91,7 @@
                                 {{#each cartList.products}}
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="../img/products/{{this.image}}" alt="">
+                                        <img src="../img/products/{{this.image}}" alt="" style="width:65px; height: 65px;">
                                         <h5>{{this.name}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
@@ -99,20 +99,21 @@
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="{{this.quantity}}">
-                                            </div>
+                                            {{!-- <div class="pro-qty"> --}}
+                                                {{!-- <input type="text" value="{{this.quantity}}"> --}}
+                                            {{!-- </div> --}}
+                                            <h3>{{this.quantity}}</h3>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                        ${{this.total}}
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
                                 </tr>
                                 {{/each}}
-                                <tr>
+                                {{!-- <tr>
                                     <td class="shoping__cart__item">
                                         <img src="img/cart/cart-2.jpg" alt="">
                                         <h5>Fresh Garden Vegetable</h5>
@@ -155,7 +156,7 @@
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
@@ -187,7 +188,7 @@
                             <li>Subtotal <span>$454.98</span></li>
                             <li>Total <span>$454.98</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
