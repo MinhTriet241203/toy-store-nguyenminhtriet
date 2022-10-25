@@ -52,34 +52,7 @@ async function shopDetail(request, response) {
         console.log(error);
     }
 }
-
-// router.get("/cart", (req, res) => {
-
-
-//     res.render("userPage/cart");
-// });
-
-// router.get("/cart/?",cart);
-// async function cart(request, response) {
-
-//     try {
-//         console.log(" Query : " + request.query)
-//         productID = request.query.productID;
-//         let ProductList = await Product.findOne({ _id: productID }); 
-//         if (request.session.username) {
-//             console.log(" Product : " +ProductList);
-//             response.render("userPage/shopDetail", { username: request.session.username , Products: ProductList })
-//         } else {
-//             console.log(" Product : " + ProductList);
-//             response.render("userPage/shopDetail",{ Products: ProductList });
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
 router.post('/addToCart?', cartController.addToCart);
-
 
 router.get('/cart', cartController.cartView);
 
@@ -90,6 +63,8 @@ router.get("/checkout", authMiddleware.isLoggedIn, (req, res) => {
 router.get("/contact", (req, res) => {
     res.render("userPage/contact", req.session.username ? {username: req.session.username} : null);
 });
+
+router.get("/placeOrder", cartController.placeOrder);
 
 //!Exporting router module|================================================
 

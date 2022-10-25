@@ -21,6 +21,32 @@ exports.addToCart = async (request, respond, next) => {
 
     respond.redirect("/shop");
 
+
+}
+
+exports.Cartsave = async (request, respond , next) =>{
+    // Cart.foreach( cart.products => {
+    //     console.log("122");
+    // });
+
+    // let getCart = await Cart.getCart({});
+
+
+    if (cart === null) {
+        cart = { products: [], totalPrice: 0 };
+    }
+        cart.products.push(product);
+        //const strProduct = JSON.stringify(product);
+        //console.log("find Product to add to cart: " + product);
+
+        //JSON.stringify to show object array
+        const str = JSON.stringify(cart);
+        console.log("Products add cart: " + str);
+    
+
+    cart.totalPrice += cart.products.total;
+    console.log("total 1: " + cart.totalPrice);
+    console.log("total 2: " + cart.products[0].total);
 }
 
 exports.cartView = async (request, respond, next) => {
@@ -41,4 +67,32 @@ exports.cartView = async (request, respond, next) => {
 }
 exports.checkout = async (request, respond, next) => {
 
+    try{
+        let carts = await Cart.getCart({});
+
+        //JSON.stringify to show object array
+        const str = JSON.stringify(carts);
+        console.log("Products add cart: " + str);
+
+        respond.render('userPage/cart',{cartList: carts,username: req.session.username })
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+exports.placeOrder = async (request, respond , next) =>{
+
+    try{
+        let carts = await Cart.getCart({});
+
+        //JSON.stringify to show object array
+        const str = JSON.stringify(carts);
+        console.log("Products add cart: " + str);
+
+        respond.render('userPage/cart',{cartList: carts,username: req.session.username })
+    }
+    catch(error){
+        console.log(error);
+    }
 }
