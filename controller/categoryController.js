@@ -207,9 +207,6 @@ router.get("/categorySearch?", authMiddleware.hasClass(['Director', 'Manager']),
     } catch (error) {
         console.log(error);
     }
-
-    console.log(request.body);
-
 });
 
 

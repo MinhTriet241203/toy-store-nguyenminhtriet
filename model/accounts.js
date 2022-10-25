@@ -8,7 +8,7 @@ const OrdersSchema = new Schema({
     color: String,
     value: Number,
     address: String,
-    Date: Date
+    Date: Date,
 });
 
 const AccountsSchema = new Schema({

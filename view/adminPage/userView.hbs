@@ -7,10 +7,12 @@
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 30px; font-weight: bold;">User View</h4>
                         {{!-- <p class="card-description"> Add class <code>.table-striped</code> </p> --}}
-                        <form class="ml-auto search-form d-none d-md-block" style="width: 300px;" action="#">
+                        <form class="ml-auto search-form d-none d-md-block" style="width: 300px;" action="/userSearch">
                             <div class="form-group">
-                                <input type="search" class="form-control" placeholder="Search username here">
+                                <input type="text" class="form-control" placeholder="Search user full name here."
+                                    name="fullname">
                             </div>
+
                         </form>
                         {{#if message}}
                         <span
