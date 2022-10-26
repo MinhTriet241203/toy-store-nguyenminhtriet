@@ -38,15 +38,11 @@ module.exports = class Cart {
         //const strProduct = JSON.stringify(product);
         //console.log("find Product to add to cart: " + product);
 
-            //JSON.stringify to show object array
-            const str = JSON.stringify(cart);
-            console.log("Products add cart: " + str);
-        
-            let counter = 0;
-            for (let i = 0; i < cart.products.length; i++) {
-                cart.totalPrice += cart.products[i].total;
-                counter++;
-            }
+        //JSON.stringify to show object array
+        const str = JSON.stringify(cart);
+        console.log("Products add cart: " + str);
+
+
 
         // cart.totalPrice += product.price;
     }
