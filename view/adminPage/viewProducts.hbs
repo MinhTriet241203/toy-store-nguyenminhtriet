@@ -7,15 +7,17 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 30px; font-weight: bold;">Products List</h4>
-                        <form class="ml-auto search-form d-none d-md-block" style="width: 300px;" action="/searchProduct?name=">
+                        <form class="ml-auto search-form d-none d-md-block" style="width: 300px;"
+                            action="/searchProduct?name=">
                             <div class="form-group">
-                                <input type="search" class="form-control" placeholder="Search for products" name="search">
-                                <button type="submit">Search</button>
+                                <input type="search" class="form-control" placeholder="Search for products"
+                                    name="search">
                             </div>
                         </form>
                         <p>
                         <div style="width: 100%; height: 30px;">
-                            <button type="button" class="btn btn-primary" style="position: absolute; right: 30px; height: 35px; background-color: #78aa2d; border-color: #749445; border-width:2px;">
+                            <button type="button" class="btn btn-primary"
+                                style="position: absolute; right: 30px; height: 35px; background-color: #78aa2d; border-color: #749445; border-width:2px;">
                                 <a href="/newProduct" style="text-decoration: none; color: inherit;">Add more toy</a>
                             </button>
                         </div>
@@ -24,7 +26,8 @@
                         {{!-- Show error message --}}
                         {{#if messageSuccess}}
                         <div class="form-group">
-                            <h5 style="width: 100%;background-color:#33A2B8;color:#fff;border-radius: 0.25rem; height:auto; padding: 10px; font-weight: 50px" id="message" onclick="this.remove()">
+                            <h5 style="width: 100%;background-color:#33A2B8;color:#fff;border-radius: 0.25rem; height:auto; padding: 10px; font-weight: 50px"
+                                id="message" onclick="this.remove()">
                                 <i class="fa-solid fa-circle-info"></i> {{messageSuccess}}
                             </h5>
                         </div>
@@ -32,7 +35,8 @@
 
                         {{#if messageError}}
                         <div class="form-group">
-                            <h5 style="width: 100%;background-color:#e45052;color:#fff;border-radius: 0.25rem; height:auto; padding: 10px; font-weight: 50px" id="message" onclick="this.remove()">
+                            <h5 style="width: 100%;background-color:#e45052;color:#fff;border-radius: 0.25rem; height:auto; padding: 10px; font-weight: 50px"
+                                id="message" onclick="this.remove()">
                                 <i class="fa-solid fa-circle-info"></i> {{messageError}}
                             </h5>
                         </div>
@@ -57,7 +61,9 @@
                                     <td>{{this.category.category_name}}</td>
                                     <td style="word-wrap: break-word; white-space: normal">{{this.description}}</td>
                                     <td>{{this.price}}</td>
-                                    <td style="word-wrap: break-word; white-space: normal"><img src="img/products/{{this.image}}" alt="Image for {{this.product_name}}" style="width:200px !important; height:200px !important; border-radius: 5% !important;" >
+                                    <td style="word-wrap: break-word; white-space: normal"><img
+                                            src="img/products/{{this.image}}" alt="Image for {{this.product_name}}"
+                                            style="width:200px !important; height:200px !important; border-radius: 5% !important;">
                                     </td>
                                     <td>{{this.stock}}</td>
                                     <td>

@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const accounts = require("../model/accounts");
 const express = require("express");
 const router = express.Router();
@@ -19,15 +20,17 @@ exports.newAccount = (req, res) => {
         return res.redirect('/');
     }
 
-    newAccount = new accounts({
+    const newAccount = new accounts({
         username: req.body.login__username,
-        password: req.body.password,
+        password: bcrypt.hashSync(req.body.password, 10),
         confirm_password: req.body.confirm_password,
         fullname: req.body.login__fullname,
         email: req.body.login__email,
         gender: req.body.gender,
         birthday: req.body.login__birthday
     });
+
+    console.log("Hashed password:" + newAccount.password);
 
     //validate email type, i.e. 'a@b.c' instead of 'ab.c' or 'a@b .c'
     function validateEmail(email) {
@@ -42,6 +45,7 @@ exports.newAccount = (req, res) => {
         req.session.message = errorMsg + " i.e: demo@mail.net";
         return res.redirect('/signup');
     }
+    
 
     accounts.findOne({
         username: req.body.login__username
@@ -60,7 +64,7 @@ exports.newAccount = (req, res) => {
         }
         accounts.findOne({
             email: req.body.login__email
-        }).exec((err, user) => {
+        }).exec(async (err, user) => {
             if (err) {
                 console.log(err);
                 return res.redirect('/signup');
@@ -79,14 +83,12 @@ exports.newAccount = (req, res) => {
                     } else {
                         console.log("Data:", document);
                         req.session.message = undefined;
-                        req.session.username = newAccount.username;     //*signin user and return to homepage
+                        req.session.username = newAccount.username; //*signin user and return to homepage
                         req.session.class = "User";
+                        console.log("Saved password:" + newAccount.password);
                         return res.redirect('/');
                     }
-                }       /*
-                        TODO: add check to see if account is in system already as well as email, etc,
-                        TODO: return the error to the signup page with the old content being parsed there as well. 
-                        */
+                }
             );
         });
     });
@@ -99,7 +101,7 @@ exports.accountAuth = async (req, res) => {
 
     console.log(req.body.username);
 
-    await accounts.findOne({
+    accounts.findOne({
         username: req.body.username
     }).exec((err, user) => {
 
@@ -119,14 +121,14 @@ exports.accountAuth = async (req, res) => {
             console.log('username ' + user.username + ' found, checking password..');
         }
 
-        if (user.password !== req.body.password) {
+        if ( !bcrypt.compareSync(req.body.password, user.password) && user.password !== req.body.password) {
             errorMsg = 'password "' + req.body.password + '" for user ' + user.username + ' does not match !';
             console.log(errorMsg);
             req.session.message = errorMsg;
             res.redirect('/login');
         }
 
-        if (user.password === req.body.password) {
+        if (bcrypt.compareSync(req.body.password, user.password) || user.password === req.body.password) {
             console.log('user ' + user.username + ' logged in successfully');
 
             req.session.message = undefined;

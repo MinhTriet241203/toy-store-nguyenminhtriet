@@ -6,7 +6,9 @@ const OrdersSchema = new Schema({
     product_id: ObjectID,
     quantity: Number,
     color: String,
-    value: Number
+    value: Number,
+    address: String,
+    Date: Date,
 });
 
 const AccountsSchema = new Schema({
