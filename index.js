@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const router = express.Router();
 const PORT = process.env.PORT || 8080;
@@ -52,11 +54,8 @@ appServer.use(express.static("public"));
 
 //Connect database|==================================================================
 
-const DB_USERNAME = "trietnfriends";
-const DB_PASSWORD = "trietnfriends";
-const DB_SERVER = "atn-shop.c7pvv4i.mongodb.net";
-const DB_NAME = "atn-toy-shop";
-const uri = `mongodb+srv://` + DB_USERNAME + `:` + DB_PASSWORD + `@` + DB_SERVER + `/` + DB_NAME + `?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://` + process.env.DB_USERNAME + `:` + process.env.DB_PASSWORD + `@` + process.env.DB_SERVER + `/` + process.env.DB_NAME + `?retryWrites=true&w=majority`;
+mongoose.set("strictQuery", false);
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
