@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mrshine4k/CloudComputing1644_ASM2#readme",
   "dependencies": {
     "@mongodb-js/charts-embed-dom": "^2.3.0",
+    "@redis/client": "^1.5.10",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "dotenv": "^16.3.1",
@@ -28,6 +29,6 @@
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
     "multer": "^1.4.5-lts.1",
-    "redis": "^4.3.1"
+    "redis": "^4.6.9"
   }
 }
