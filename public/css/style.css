@@ -1042,6 +1042,7 @@ ol {
 	display: flex;
 	align-items: center;
 	padding: 45px 0 40px;
+	height: 400px;
 }
 
 .breadcrumb__text h2 {
@@ -2650,7 +2651,7 @@ ol {
 }
 
 .footer__widget ul {
-	width: 50%;
+	width: 85%;
 	float: left;
 }
 
