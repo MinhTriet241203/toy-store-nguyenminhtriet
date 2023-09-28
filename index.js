@@ -121,6 +121,6 @@ appServer.use("/", AuthRouter);
 //!Launch|=======================================================
 
 appServer.listen(PORT);
-console.log("||Server running at " + PORT + "||=====================================");
+console.log("=====||Server running||=====");
 
 //!Launch|=======================================================
