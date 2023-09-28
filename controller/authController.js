@@ -139,9 +139,10 @@ exports.accountAuth = async (req, res) => {
 
             if (req.session.class === "User") {
                 return res.redirect('/');
-            } else if (req.session.class === "Director"
-                || req.session.class === "Manager") {
+            } else if (req.session.class === "Director") {
                 return res.redirect('/dashboard');
+            } else {
+                return res.redirect('/categoryView');
             }
         }
     });

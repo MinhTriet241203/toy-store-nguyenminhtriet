@@ -8,30 +8,21 @@ const authMiddleware = require("../middleware/authMiddleware");
 const { GeoReplyWith } = require("redis");
 
 //Setting routes in module|================================================
-
-router.get("/formImplement", authMiddleware.hasClass(['Director', 'Manager']), (req, res) => {
-    res.render("adminPage/formImplement", { username: req.session.username });
-});
-
-router.get("/table", authMiddleware.hasClass(['Director', 'Manager']), (req, res) => {
-    res.render("adminPage/table", { username: req.session.username })   //check login class
-});
-
-router.get("/accountDelete/:id", authMiddleware.hasClass(['Director', 'Manager']), authController.delAccount);
+router.get("/accountDelete/:id", authMiddleware.hasClass(['Director']), authController.delAccount);
 
 router.post("/managerAdd", authMiddleware.hasClass('Director'), managerController.managerAdd);
 
-router.get("/dashboard", authMiddleware.hasClass(['Director', 'Manager']), (req, res) => {
+router.get("/dashboard", authMiddleware.hasClass(['Director']), (req, res) => {
     req.session.username ? res.render("adminPage/dashboard", { username: req.session.username }) : res.redirect("/login")
 });
 
-router.get("/userView", authMiddleware.hasClass(['Director', 'Manager']), async (req, res) => {
+router.get("/userView", authMiddleware.hasClass(['Director']), async (req, res) => {
     userList = await accounts.find({ account_class: 'User' });
     res.render("adminPage/userView", req.session.message ? { User: userList, message: req.session.message, username: req.session.username } : { User: userList, username: req.session.username });
     req.session.message = null;
 });
 
-router.get("/managerSearch?", authMiddleware.hasClass(['Director', 'Manager']), async (yeucau, trave) => {
+router.get("/managerSearch?", authMiddleware.hasClass(['Director']), async (yeucau, trave) => {
 
     console.log("\n BODY: ", yeucau.body);
     console.log("\n Params: ", yeucau.params);
@@ -51,7 +42,7 @@ router.get("/managerSearch?", authMiddleware.hasClass(['Director', 'Manager']), 
     }
 });
 
-router.get("/userSearch?", authMiddleware.hasClass(['Director', 'Manager']), async (yeucau, trave) => {
+router.get("/userSearch?", authMiddleware.hasClass(['Director']), async (yeucau, trave) => {
 
     console.log("\n BODY: ", yeucau.body);
     console.log("\n Params: ", yeucau.params);
